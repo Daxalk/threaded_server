@@ -44,9 +44,10 @@ def main():
     sock = socket.socket()
     print('Сервер запустился')
     port_listening(sock)
-    conn, addr = sock.accept()
-    newthread = ClientThread(addr, conn)
-    newthread.start()
+    while True:
+        conn, addr = sock.accept()
+        newthread = ClientThread(addr, conn)
+        newthread.start()
 
 
 main()
